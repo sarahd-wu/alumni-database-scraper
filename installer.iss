@@ -8,6 +8,7 @@ DefaultGroupName=MyApp
 OutputBaseFilename=MyAppInstaller
 Compression=lzma
 SolidCompression=yes
+OutputDir=dist
 
 [Files]
 Source: "dist\app.exe"; DestDir: "{app}"; Flags: ignoreversion
