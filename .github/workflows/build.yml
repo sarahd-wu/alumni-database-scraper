@@ -26,10 +26,10 @@ jobs:
 
     - name: Build executable with PyInstaller
       run: |
-        pyinstaller --onefile ^                
-              --add-data "templates:templates" ^
-              --add-data "output.csv:." ^
-              app.py
+        pyinstaller --onefile `
+          --add-data "templates;templates" `
+          --add-data "output.csv;." `
+          app.py
 
     - name: Install Inno Setup
       run: |
