@@ -26,10 +26,22 @@ jobs:
 
     - name: Build executable with PyInstaller
       run: |
-        pyinstaller --onefile app.py
+        pyinstaller --onefile ^                
+              --add-data "templates:templates" ^
+              --add-data "output.csv:." ^
+              app.py
 
-    - name: Upload EXE artifact
+    - name: Install Inno Setup
+      run: |
+        Invoke-WebRequest -Uri "https://jrsoftware.org/download.php/is.exe" -OutFile is.exe
+        Start-Process -Wait -FilePath .\is.exe /VERYSILENT
+
+    - name: Run Inno Setup Compiler
+      run: |
+        & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
+
+    - name: Upload Installer Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: app
-        path: dist/app.exe
+        name: MyAppInstaller
+        path: MyAppInstaller.exe
