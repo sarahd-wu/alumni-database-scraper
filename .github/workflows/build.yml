@@ -31,5 +31,5 @@ jobs:
     - name: Upload EXE artifact
       uses: actions/upload-artifact@v3
       with:
-        name: my-python-app-exe
-        path: dist/your_script.exe
+        name: app
+        path: dist/app
